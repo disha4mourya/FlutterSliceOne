@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slice_one/home_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
@@ -27,6 +28,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   void showMessage() {
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
     Fluttertoast.showToast(
         msg: "Clicked",
         toastLength: Toast.LENGTH_SHORT,
