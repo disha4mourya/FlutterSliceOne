@@ -46,12 +46,22 @@ Widget buildList(AsyncSnapshot<ResultModel> snapshot) {
   return GridView.builder(
       itemCount: snapshot.data.results.length,
       gridDelegate:
-          new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+          new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemBuilder: (BuildContext context, int index) {
-        return GridTile(
+        return Container(
+          margin: new EdgeInsets.all(20.0),
+          child: Column(
+            children: <Widget>[
+              new Text(snapshot.data.results[index].track_name),
+              new Image.network(snapshot.data.results[index].artworkUrl_100,
+                  fit: BoxFit.fill)
+            ],
+          ),
+        );
+        /*return GridTile(
             child: InkResponse(
           enableFeedback: true,
           child: Text(snapshot.data.results[index].track_name),
-        ));
+        ));*/
       });
 }
