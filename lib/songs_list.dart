@@ -6,15 +6,11 @@ import 'package:http/http.dart' as http;
 import 'package:rxdart/rxdart.dart';
 
 Future<ResultModel> fetchPost() async {
-  print("resultis" + "initial");
-
   final response =
       await http.get('https://itunes.apple.com/search?term=Michael+jackson');
 
   if (response.statusCode == 200) {
     // If the call to the server was successful, parse the JSON
-    print("resultis" + response.body.toString());
-
     return ResultModel.fromJson(json.decode(response.body));
   } else {
     // If that call was not successful, throw an error.
@@ -28,8 +24,6 @@ class ResultModel {
 
   ResultModel.fromJson(Map<String, dynamic> parsedJson) {
     resultCount = parsedJson['resultCount'];
-    print("CountIS" + resultCount.toString());
-
     List<SongsModel> songs = [];
 
     for (int i = 0; i < parsedJson['results'].length; i++) {
@@ -66,20 +60,18 @@ class SongsModel {
 void main() => runApp(AsyncCall());
 
 class AsyncCall extends StatelessWidget {
-  // final Future<ResultModel> post;
 
-  //AsyncCall({Key key, this.post}) : super(key: key);
   final songsFetcher = PublishSubject<ResultModel>();
 
   Observable<ResultModel> get allSongs => songsFetcher.stream;
 
-  fetchAllSOngs() async {
+  fetchAllSongs() async {
     ResultModel resultModel = await fetchPost();
     songsFetcher.sink.add(resultModel);
   }
 
   AsyncCall() {
-    fetchAllSOngs();
+    fetchAllSongs();
   }
 
   @override
@@ -97,18 +89,15 @@ class AsyncCall extends StatelessWidget {
           child: StreamBuilder(
             stream: allSongs,
             builder: (context, snapshot) {
-              print("resultis" + "snapshot" + snapshot.hasData.toString());
-              print("resultis" + "snapshot" + snapshot.hasError.toString());
-              print("resultis" + "snapshot" + snapshot.hashCode.toString());
-
               if (snapshot.hasData) {
                 // return Text(snapshot.data.title);
                 return buildList(snapshot);
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
+              }else {
+                // By default, show a loading spinner
+                return CircularProgressIndicator();
               }
-              // By default, show a loading spinner
-              return CircularProgressIndicator();
             },
           ),
         ),
@@ -132,11 +121,6 @@ class AsyncCall extends StatelessWidget {
               ],
             ),
           );
-          /*return GridTile(
-            child: InkResponse(
-          enableFeedback: true,
-          child: Text(snapshot.data.results[index].track_name),
-        ));*/
         });
   }
 }
