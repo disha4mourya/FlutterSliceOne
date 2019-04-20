@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slice_one/view/home_page.dart';
+import 'package:flutter_slice_one/home_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
