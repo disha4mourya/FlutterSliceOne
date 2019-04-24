@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'package:flutter_slice_one/home_page.dart';
 
 class LoginPageCooler extends StatefulWidget {
   static String tag = 'login-page';
@@ -49,6 +49,10 @@ class _LoginPageState extends State<LoginPageCooler> {
         ),
         onPressed: () {
 //          Navigator.of(context).pushNamed(HomePage.tag);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()),
+          );
         },
         padding: EdgeInsets.all(12),
         color: Colors.lightBlueAccent,
