@@ -3,6 +3,8 @@ import 'package:flutter_slice_one/home_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
+  static String tag = '/login';
+
   LoginPage({Key key, this.title}) : super(key: key);
 
   final String title;
@@ -12,7 +14,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<LoginPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

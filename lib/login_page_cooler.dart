@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slice_one/home_page.dart';
+import 'package:flutter_slice_one/future_song_list.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPageCooler extends StatefulWidget {
-  static String tag = 'login-page';
+  static String tag = '/';
+
   @override
   _LoginPageState createState() => new _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPageCooler> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final logo = Hero(
-      tag: 'hero',
+      tag: 'hero2',
       child: CircleAvatar(
         backgroundColor: Colors.transparent,
         radius: 48.0,
@@ -19,10 +24,10 @@ class _LoginPageState extends State<LoginPageCooler> {
       ),
     );
 
-    final email = TextFormField(
+    final email = TextField(
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
-      initialValue: 'disha4mourya@gmail.com',
+      controller: emailController,
       decoration: InputDecoration(
         hintText: 'Email',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -30,10 +35,10 @@ class _LoginPageState extends State<LoginPageCooler> {
       ),
     );
 
-    final password = TextFormField(
+    final password = TextField(
       autofocus: false,
-      initialValue: 'flutter',
       obscureText: true,
+      controller: passwordController,
       decoration: InputDecoration(
         hintText: 'Password',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -48,11 +53,7 @@ class _LoginPageState extends State<LoginPageCooler> {
           borderRadius: BorderRadius.circular(24),
         ),
         onPressed: () {
-//          Navigator.of(context).pushNamed(HomePage.tag);
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => HomePage()),
-          );
+          processLogin(context);
         },
         padding: EdgeInsets.all(12),
         color: Colors.lightBlueAccent,
@@ -65,7 +66,18 @@ class _LoginPageState extends State<LoginPageCooler> {
         'Forgot password?',
         style: TextStyle(color: Colors.black54),
       ),
-      onPressed: () {},
+      onPressed: () {
+        return showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              // Retrieve the text the user has typed in using our
+              // TextEditingController
+              content: Text("Forget Password"),
+            );
+          },
+        );
+      },
     );
 
     return Scaffold(
@@ -87,5 +99,42 @@ class _LoginPageState extends State<LoginPageCooler> {
         ),
       ),
     );
+  }
+
+  void processLogin(BuildContext context) {
+    var email = emailController.text;
+    var pass = passwordController.text;
+
+//    if (email == "yoman@gmail.com" && pass == "1234") {
+    Navigator.of(context).pushNamed(AsyncCallFuture.tag);
+//    } else {
+//      showMessage();
+//    }
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the Widget is disposed
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  void _showToast(BuildContext context) {
+    final scaffold = Scaffold.of(context);
+    scaffold.showSnackBar(SnackBar(
+      content: Text('Invalid Email and Password'),
+    ));
+  }
+
+  void showMessage() {
+    Fluttertoast.showToast(
+        msg: "Invalid Email and Password",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.blueGrey,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 }
