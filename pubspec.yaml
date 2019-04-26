@@ -25,7 +25,6 @@ flutter:
   uses-material-design: true
   assets:
     - flutter_logo_round.png
-    - assets/disha_dp.jpg
 
   fonts:
     - family: Nunito

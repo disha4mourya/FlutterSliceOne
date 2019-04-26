@@ -17,25 +17,34 @@ class SplashScreen extends StatefulWidget {
 class _SplashState extends State<SplashScreen> {
   StreamSubscription sub;
 
-  _SplashState(){
+  _SplashState() {
     checkLoginState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: FlutterLogo(
-          size: 200,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Colors.blueAccent[400],
+              Colors.blue[300],
+              Colors.lightBlue[200],
+              Colors.lightBlue[100],
+            ],
+          ),
+        ),
+        child: Center(
+          child: FlutterLogo(
+            size: 200,
+          ),
         ),
       ),
     );
   }
-
- /* @override
-  void initState() {
-    super.initState();
-    checkLoginState();
-  }*/
 
   void checkLoginState() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -49,7 +58,6 @@ class _SplashState extends State<SplashScreen> {
             MaterialPageRoute(builder: (context) => AsyncCallFuture());
         Navigator.pushReplacement(context, route);
       } else {
-        // Navigator.of(context).pushNamed(LoginPageCooler.tag);
         Route route =
             MaterialPageRoute(builder: (context) => LoginPageCooler());
         Navigator.pushReplacement(context, route);
