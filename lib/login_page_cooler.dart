@@ -14,7 +14,8 @@ class _LoginPageState extends State<LoginPageCooler> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  bool _validate = false;
+  bool _validateEmail = false;
+  bool _validatePassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +37,7 @@ class _LoginPageState extends State<LoginPageCooler> {
         hintText: 'Email',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
+        errorText: _validateEmail ? 'Email Can\'t Be Empty' : null,
       ),
     );
 
@@ -47,7 +49,7 @@ class _LoginPageState extends State<LoginPageCooler> {
         hintText: 'Password',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
-        errorText: _validate ? 'Value Can\'t Be Empty' : null,
+        errorText: _validatePassword ? 'Password Can\'t Be Empty' : null,
       ),
     );
 
@@ -95,7 +97,7 @@ class _LoginPageState extends State<LoginPageCooler> {
             logo,
             SizedBox(height: 48.0),
             email,
-            SizedBox(height: 8.0),
+            SizedBox(height: 12.0),
             password,
             SizedBox(height: 24.0),
             loginButton,
@@ -111,7 +113,8 @@ class _LoginPageState extends State<LoginPageCooler> {
     var pass = passwordController.text;
 
     setState(() {
-      emailController.text.isEmpty ? _validate = true : _validate = false;
+      _validateEmail = emailController.text.isEmpty ? true : false;
+      _validatePassword = passwordController.text.isEmpty ? true : false;
     });
 
     SharedPreferences prefs = await SharedPreferences.getInstance();

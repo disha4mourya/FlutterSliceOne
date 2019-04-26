@@ -8,6 +8,8 @@ import 'package:flutter_slice_one/screen_arguments.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'login_page_cooler.dart';
+
 void main() => runApp(AsyncCallFuture());
 
 class AsyncCallFuture extends StatelessWidget {
@@ -21,7 +23,9 @@ class AsyncCallFuture extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.all_out),
-            onPressed: () {},
+            onPressed: () {
+              logOut(context);
+            },
           ),
         ],
       ),
@@ -105,8 +109,11 @@ class AsyncCallFuture extends StatelessWidget {
     }
   }
 
-  void logOut() async {
+  void logOut(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.clear();
+
+    Route route = MaterialPageRoute(builder: (context) => LoginPageCooler());
+    Navigator.pushReplacement(context, route);
   }
 }
