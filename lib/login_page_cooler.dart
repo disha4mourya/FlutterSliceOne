@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slice_one/future_song_list.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPageCooler extends StatefulWidget {
-  static String tag = '/';
+  static String tag = '/login_page_cooler';
 
   @override
   _LoginPageState createState() => new _LoginPageState();
@@ -16,7 +17,7 @@ class _LoginPageState extends State<LoginPageCooler> {
   @override
   Widget build(BuildContext context) {
     final logo = Hero(
-      tag: 'hero2',
+      tag: 'logo',
       child: CircleAvatar(
         backgroundColor: Colors.transparent,
         radius: 48.0,
@@ -101,15 +102,18 @@ class _LoginPageState extends State<LoginPageCooler> {
     );
   }
 
-  void processLogin(BuildContext context) {
+  void processLogin(BuildContext context) async {
     var email = emailController.text;
     var pass = passwordController.text;
 
-//    if (email == "yoman@gmail.com" && pass == "1234") {
-    Navigator.of(context).pushNamed(AsyncCallFuture.tag);
-//    } else {
-//      showMessage();
-//    }
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    if (email == "yoman@gmail.com" && pass == "1234") {
+      await prefs.setBool('isLoggedIn', true);
+      Navigator.of(context).pushNamed(AsyncCallFuture.tag);
+    } else {
+      showMessage();
+    }
   }
 
   @override

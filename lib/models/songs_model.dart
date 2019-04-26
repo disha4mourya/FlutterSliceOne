@@ -22,12 +22,14 @@ class SongsModel {
   String _track_name;
   String artworkUrl30;
   String artworkUrl100;
+  String collectionCensoredName;
 
   SongsModel(result) {
     _wrapper_type = result['wrapperType'];
     _track_name = result['trackName'];
     artworkUrl30 = result['artworkUrl30'];
     artworkUrl100 = result['artworkUrl100'];
+    collectionCensoredName = result['collectionCensoredName'];
   }
 
   String get wrapper_type => _wrapper_type;
@@ -36,4 +38,5 @@ class SongsModel {
 
   String get artworkUrl_30 => artworkUrl30;
   String get artworkUrl_100 => artworkUrl100;
+  String get collection_censored_name => collectionCensoredName;
 }
