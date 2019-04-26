@@ -14,15 +14,18 @@ class _LoginPageState extends State<LoginPageCooler> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
+  bool _validate = false;
+
   @override
   Widget build(BuildContext context) {
     final logo = Hero(
       tag: 'logo',
       child: CircleAvatar(
-        backgroundColor: Colors.transparent,
-        radius: 48.0,
-        child: FlutterLogo(size: 200,)
-      ),
+          backgroundColor: Colors.transparent,
+          radius: 48.0,
+          child: FlutterLogo(
+            size: 200,
+          )),
     );
 
     final email = TextField(
@@ -44,6 +47,7 @@ class _LoginPageState extends State<LoginPageCooler> {
         hintText: 'Password',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
+        errorText: _validate ? 'Value Can\'t Be Empty' : null,
       ),
     );
 
@@ -106,11 +110,15 @@ class _LoginPageState extends State<LoginPageCooler> {
     var email = emailController.text;
     var pass = passwordController.text;
 
+    setState(() {
+      emailController.text.isEmpty ? _validate = true : _validate = false;
+    });
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     if (email == "yoman@gmail.com" && pass == "1234") {
       await prefs.setBool('isLoggedIn', true);
-     // Navigator.of(context).pushNamed(AsyncCallFuture.tag);
+      // Navigator.of(context).pushNamed(AsyncCallFuture.tag);
       Route route = MaterialPageRoute(builder: (context) => AsyncCallFuture());
       Navigator.pushReplacement(context, route);
     } else {

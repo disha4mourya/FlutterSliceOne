@@ -6,6 +6,7 @@ import 'package:flutter_slice_one/home_page_details.dart';
 import 'package:flutter_slice_one/models/songs_model.dart';
 import 'package:flutter_slice_one/screen_arguments.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(AsyncCallFuture());
 
@@ -17,6 +18,12 @@ class AsyncCallFuture extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Future Fetch Data Example'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.all_out),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Center(
         child: FutureBuilder<ResultModel>(
@@ -96,5 +103,10 @@ class AsyncCallFuture extends StatelessWidget {
       // If that call was not successful, throw an error.
       throw Exception('Failed to load post');
     }
+  }
+
+  void logOut() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
   }
 }
