@@ -25,7 +25,8 @@ class HomePageDetails extends StatelessWidget {
     final welcome = Padding(
       padding: EdgeInsets.all(8.0),
       child: Text(
-        'Welcome Yoman',
+        args.title,
+        textAlign: TextAlign.center,
         style: TextStyle(fontSize: 28.0, color: Colors.white),
       ),
     );
@@ -33,7 +34,7 @@ class HomePageDetails extends StatelessWidget {
     final lorem = Padding(
       padding: EdgeInsets.all(8.0),
       child: Text(
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit condimentum mauris id tempor. Praesent eu commodo lacus. Praesent eget mi sed libero eleifend tempor. Sed at fringilla ipsum. Duis malesuada feugiat urna vitae convallis. Aliquam eu libero arcu.',
+        args.subTitle,
         style: TextStyle(fontSize: 16.0, color: Colors.white),
       ),
     );

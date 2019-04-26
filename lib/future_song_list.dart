@@ -77,7 +77,10 @@ class AsyncCallFuture extends StatelessWidget {
           onTap: () {
             Navigator.of(context).pushNamed(HomePageDetails.tag,
                 arguments: ScreenArguments(
-                    index, snapshot.data.results[index].artworkUrl100));
+                    snapshot.data.results[index].track_name,
+                    snapshot.data.results[index].collection_censored_name,
+                    index,
+                    snapshot.data.results[index].artworkUrl100));
           },
         ));
   }
