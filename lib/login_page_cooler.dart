@@ -19,14 +19,11 @@ class _LoginPageState extends State<LoginPageCooler> {
 
   @override
   Widget build(BuildContext context) {
-    final logo = Hero(
-      tag: 'logo',
-      child: CircleAvatar(
+    final logo = CircleAvatar(
           backgroundColor: Colors.transparent,
           radius: 48.0,
           child: FlutterLogo(
-            size: 200,
-          )),
+            size: 200,),
     );
 
     final email = TextField(

@@ -10,24 +10,21 @@ class HomePageDetails extends StatelessWidget {
     // them as ScreenArguments.
     final ScreenArguments args = ModalRoute.of(context).settings.arguments;
 
-    final alucard = Hero(
+    final topArtistImage = Hero(
       tag: args.heroTag,
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: CircleAvatar(
-          radius: 72.0,
-          backgroundColor: Colors.transparent,
-          backgroundImage: NetworkImage(args.imageURL),
-        ),
+      child: CircleAvatar(
+        radius: 128.0,
+        backgroundColor: Colors.transparent,
+        backgroundImage: NetworkImage(args.imageURL),
       ),
     );
 
     final welcome = Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.fromLTRB(0, 24, 0, 12),
       child: Text(
         args.title,
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 28.0, color: Colors.white),
+        style: TextStyle(fontSize: 32.0, color: Colors.white),
       ),
     );
 
@@ -35,7 +32,8 @@ class HomePageDetails extends StatelessWidget {
       padding: EdgeInsets.all(8.0),
       child: Text(
         args.subTitle,
-        style: TextStyle(fontSize: 16.0, color: Colors.white),
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 22.0, color: Colors.white70),
       ),
     );
 
@@ -43,13 +41,19 @@ class HomePageDetails extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.all(28.0),
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [
-          Colors.blue,
-          Colors.lightBlueAccent,
-        ]),
+        gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Colors.blueAccent[400],
+              Colors.blue[600],
+              Colors.lightBlue[500],
+              Colors.lightBlue[400],
+            ]),
       ),
       child: Column(
-        children: <Widget>[alucard, welcome, lorem],
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[topArtistImage, welcome, lorem],
       ),
     );
 

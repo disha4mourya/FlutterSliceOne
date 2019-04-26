@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
           primarySwatch: Colors.lightBlue,
-         ),
+          primaryTextTheme: TextTheme(title: TextStyle(color: Colors.white))),
 //      home: LoginPage(title: 'Flutter Part 1'),
       initialRoute: SplashScreen.tag,
       routes: routes,

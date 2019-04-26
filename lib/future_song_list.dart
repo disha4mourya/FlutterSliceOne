@@ -22,7 +22,7 @@ class AsyncCallFuture extends StatelessWidget {
         title: Text('Future Fetch Data Example'),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.all_out),
+            icon: Icon(Icons.all_out, color: Colors.white,),
             onPressed: () {
               logOut(context);
             },
@@ -52,7 +52,7 @@ class AsyncCallFuture extends StatelessWidget {
     return GridView.builder(
         itemCount: snapshot.data.results.length,
         gridDelegate:
-            new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
           return _buildRow(context, snapshot, index);
         });
@@ -74,6 +74,7 @@ class AsyncCallFuture extends StatelessWidget {
                         child: Text(
                           snapshot.data.results[index].track_name,
                           textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 20.0),
                         )),
                     Hero(
                         tag: index,
@@ -98,7 +99,7 @@ class AsyncCallFuture extends StatelessWidget {
 
   Future<ResultModel> fetchPost() async {
     final response =
-        await http.get('https://itunes.apple.com/search?term=Michael+jackson');
+        await http.get('https://itunes.apple.com/search?term=Eminem'); // Michael+jackson
 
     if (response.statusCode == 200) {
       // If the call to the server was successful, parse the JSON
