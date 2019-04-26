@@ -17,31 +17,25 @@ class SplashScreen extends StatefulWidget {
 class _SplashState extends State<SplashScreen> {
   StreamSubscription sub;
 
+  _SplashState(){
+    checkLoginState();
+  }
   @override
   Widget build(BuildContext context) {
-    // TODO: implement buildStatelessWidget
     return Scaffold(
       body: Center(
-        child: Hero(
-          tag: "logo",
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: CircleAvatar(
-              radius: 72.0,
-              backgroundColor: Colors.transparent,
-              child: Image.asset('assets/flutter_logo_round.png'),
-            ),
-          ),
+        child: FlutterLogo(
+          size: 200,
         ),
       ),
     );
   }
 
-  @override
+ /* @override
   void initState() {
     super.initState();
     checkLoginState();
-  }
+  }*/
 
   void checkLoginState() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -51,16 +45,20 @@ class _SplashState extends State<SplashScreen> {
     sub = cd.stream.listen(null);
     sub.onDone(() {
       if (isLoggedIn) {
-        Navigator.of(context).pushNamed(AsyncCallFuture.tag);
+        Route route =
+            MaterialPageRoute(builder: (context) => AsyncCallFuture());
+        Navigator.pushReplacement(context, route);
       } else {
-        Navigator.of(context).pushNamed(LoginPageCooler.tag);
+        // Navigator.of(context).pushNamed(LoginPageCooler.tag);
+        Route route =
+            MaterialPageRoute(builder: (context) => LoginPageCooler());
+        Navigator.pushReplacement(context, route);
       }
     });
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     sub.cancel();
   }

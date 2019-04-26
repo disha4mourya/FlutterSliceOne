@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPageCooler> {
       child: CircleAvatar(
         backgroundColor: Colors.transparent,
         radius: 48.0,
-        child: Image.asset('assets/flutter_logo_round.png'),
+        child: FlutterLogo(size: 200,)
       ),
     );
 
@@ -110,7 +110,9 @@ class _LoginPageState extends State<LoginPageCooler> {
 
     if (email == "yoman@gmail.com" && pass == "1234") {
       await prefs.setBool('isLoggedIn', true);
-      Navigator.of(context).pushNamed(AsyncCallFuture.tag);
+     // Navigator.of(context).pushNamed(AsyncCallFuture.tag);
+      Route route = MaterialPageRoute(builder: (context) => AsyncCallFuture());
+      Navigator.pushReplacement(context, route);
     } else {
       showMessage();
     }
