@@ -15,8 +15,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashState extends State<SplashScreen> {
-  StreamSubscription sub;
-
   _SplashState() {
     checkLoginState();
   }
@@ -50,24 +48,19 @@ class _SplashState extends State<SplashScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool isLoggedIn = (prefs.getBool('isLoggedIn') ?? false);
 
-    CountDown cd = CountDown(Duration(seconds: 3));
-    sub = cd.stream.listen(null);
-    sub.onDone(() {
-      if (isLoggedIn) {
-        Route route =
-            MaterialPageRoute(builder: (context) => AsyncCallFuture());
-        Navigator.pushReplacement(context, route);
-      } else {
-        Route route =
-            MaterialPageRoute(builder: (context) => LoginPageCooler());
-        Navigator.pushReplacement(context, route);
-      }
-    });
+    await new Future.delayed(const Duration(seconds: 3));
+
+    if (isLoggedIn) {
+      Route route = MaterialPageRoute(builder: (context) => AsyncCallFuture());
+      Navigator.pushReplacement(context, route);
+    } else {
+      Route route = MaterialPageRoute(builder: (context) => LoginPageCooler());
+      Navigator.pushReplacement(context, route);
+    }
   }
 
   @override
   void dispose() {
     super.dispose();
-    sub.cancel();
   }
 }

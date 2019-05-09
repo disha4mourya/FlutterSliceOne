@@ -34,7 +34,6 @@ class AsyncCallFuture extends StatelessWidget {
           future: fetchPost(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              // return Text(snapshot.data.title);
               return buildList(snapshot);
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
