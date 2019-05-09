@@ -2,13 +2,13 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_slice_one/home_page_details.dart';
-import 'package:flutter_slice_one/models/songs_model.dart';
-import 'package:flutter_slice_one/screen_arguments.dart';
+import 'package:flutter_slice_one/bloc_arch/models/songs_model.dart';
+import 'package:flutter_slice_one/part_one/song_details.dart';
+import 'package:flutter_slice_one/part_one/screen_arguments.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'login_page_cooler.dart';
+import 'package:flutter_slice_one/part_one/login.dart';
 
 void main() => runApp(AsyncCallFuture());
 

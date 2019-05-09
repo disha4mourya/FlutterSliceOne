@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slice_one/future_song_list.dart';
+import 'package:flutter_slice_one/part_one/song_list.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -116,7 +116,7 @@ class _LoginPageState extends State<LoginPageCooler> {
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    if (email == "yoman@gmail.com" && pass == "1234") {
+    if (email == "test@gmail.com" && pass == "1234") {
       await prefs.setBool('isLoggedIn', true);
       // Navigator.of(context).pushNamed(AsyncCallFuture.tag);
       Route route = MaterialPageRoute(builder: (context) => AsyncCallFuture());

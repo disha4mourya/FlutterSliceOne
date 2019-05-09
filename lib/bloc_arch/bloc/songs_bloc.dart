@@ -1,5 +1,5 @@
-import 'package:flutter_slice_one/models/songs_model.dart';
-import 'package:flutter_slice_one/repo/songs_repo.dart';
+import 'package:flutter_slice_one/bloc_arch/models/songs_model.dart';
+import 'package:flutter_slice_one/bloc_arch/repo/songs_repo.dart';
 import 'package:rxdart/rxdart.dart';
 
 class SongsBloc{

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slice_one/future_song_list.dart';
-import 'package:flutter_slice_one/home_page_details.dart';
-import 'package:flutter_slice_one/login_page_cooler.dart';
-import 'package:flutter_slice_one/splash_screen.dart';
+import 'package:flutter_slice_one/part_one/song_list.dart';
+import 'package:flutter_slice_one/part_one/song_details.dart';
+import 'package:flutter_slice_one/part_one/login.dart';
+import 'package:flutter_slice_one/part_one/splash_screen.dart';
 
 void main() => runApp(MyApp());
 

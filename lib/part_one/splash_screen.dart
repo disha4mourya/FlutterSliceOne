@@ -1,11 +1,9 @@
 import 'dart:async';
 
-import 'package:countdown/countdown.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'future_song_list.dart';
-import 'login_page_cooler.dart';
+import 'song_list.dart';
+import 'login.dart';
 
 class SplashScreen extends StatefulWidget {
   static String tag = '/';

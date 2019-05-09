@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slice_one/screen_arguments.dart';
+import 'package:flutter_slice_one/part_one/screen_arguments.dart';
 
 class HomePageDetails extends StatelessWidget {
   static String tag = '/home-page-details';

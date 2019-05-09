@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter_slice_one/models/songs_model.dart';
+import 'package:flutter_slice_one/bloc_arch/models/songs_model.dart';
 import 'package:http/http.dart' ;
 
 class SongApiProvider{
