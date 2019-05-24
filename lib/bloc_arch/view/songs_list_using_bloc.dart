@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slice_one/bloc_arch/bloc/songs_bloc.dart';
 import 'package:flutter_slice_one/bloc_arch/models/songs_model.dart';
 
-class SongsList extends StatefulWidget {
+class Songs extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return SongsListState();
   }
 }
 
-class SongsListState extends State<SongsList> {
+class SongsListState extends State<Songs> {
   @override
   void initState() {
     super.initState();

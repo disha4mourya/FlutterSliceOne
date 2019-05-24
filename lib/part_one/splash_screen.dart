@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_slice_one/bloc_arch/view/songs_list_using_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'song_list.dart';
 import 'login.dart';
@@ -49,7 +50,7 @@ class _SplashState extends State<SplashScreen> {
     await new Future.delayed(const Duration(seconds: 3));
 
     if (isLoggedIn) {
-      Route route = MaterialPageRoute(builder: (context) => AsyncCallFuture());
+      Route route = MaterialPageRoute(builder: (context) => Songs());
       Navigator.pushReplacement(context, route);
     } else {
       Route route = MaterialPageRoute(builder: (context) => LoginPageCooler());
