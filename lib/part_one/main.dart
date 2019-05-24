@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slice_one/part_one/song_list.dart';
-import 'package:flutter_slice_one/part_one/song_details.dart';
+import 'package:flutter_slice_one/bloc_arch/view/songs_list_using_bloc.dart';
 import 'package:flutter_slice_one/part_one/login.dart';
 import 'package:flutter_slice_one/part_one/splash_screen.dart';
 
@@ -10,8 +9,7 @@ class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
     SplashScreen.tag: (context) => SplashScreen(),
     LoginPageCooler.tag: (context) => LoginPageCooler(),
-    AsyncCallFuture.tag: (context) => AsyncCallFuture(),
-    HomePageDetails.tag: (context) => HomePageDetails(),
+    Songs.tag: (context) => Songs()
   };
 
   @override

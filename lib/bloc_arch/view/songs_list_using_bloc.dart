@@ -3,6 +3,8 @@ import 'package:flutter_slice_one/bloc_arch/bloc/songs_bloc.dart';
 import 'package:flutter_slice_one/bloc_arch/models/songs_model.dart';
 
 class Songs extends StatefulWidget {
+  static String tag = '/listing';
+
   @override
   State<StatefulWidget> createState() {
     return SongsListState();
@@ -63,5 +65,6 @@ Widget buildList(AsyncSnapshot<ResultModel> snapshot) {
           enableFeedback: true,
           child: Text(snapshot.data.results[index].track_name),
         ));*/
-      });
+      }
+      );
 }

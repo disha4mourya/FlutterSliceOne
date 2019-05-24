@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_slice_one/bloc_arch/view/songs_list_using_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'song_list.dart';
 import 'login.dart';
 
 class SplashScreen extends StatefulWidget {

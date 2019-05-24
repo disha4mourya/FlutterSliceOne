@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slice_one/part_one/song_list.dart';
+import 'package:flutter_slice_one/bloc_arch/view/songs_list_using_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -119,7 +119,7 @@ class _LoginPageState extends State<LoginPageCooler> {
     if (email == "test@gmail.com" && pass == "1234") {
       await prefs.setBool('isLoggedIn', true);
       // Navigator.of(context).pushNamed(AsyncCallFuture.tag);
-      Route route = MaterialPageRoute(builder: (context) => AsyncCallFuture());
+      Route route = MaterialPageRoute(builder: (context) => Songs());
       Navigator.pushReplacement(context, route);
     } else {
       showMessage();
